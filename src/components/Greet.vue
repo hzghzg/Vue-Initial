@@ -1,6 +1,7 @@
 <template>
     <div>
         <input type='text' v-model="greets">
+        <input type='text' v-model="this.$store.state.greetFromBackend">
         <p>{{greet}}</p>
         <el-button type="success" @click="triggerUpdateGreet">成功按钮</el-button>
         <el-button type="danger" @click="showform">显示表单</el-button>
@@ -26,6 +27,7 @@ export default {
         },
         showform(){
             this.$refs['form'].displayForm();
+            this.$store.dispatch("greetFromBackend","hzg!");
         }
     },
     computed:{//被以来项改变会导致computed的属性也立即改变;第一次加载也会认为改变被赋值
